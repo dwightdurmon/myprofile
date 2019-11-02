@@ -1,0 +1,20 @@
+#--------------------------------------------------------------------
+# Sync upstream repo
+#--------------------------------------------------------------------
+UPSTREAM_COUNT=$(git remote -v | grep upstream | grep fetch -c)
+
+if [[ $UPSTREAM_COUNT -eq 1 ]]; then
+    echo "--> Fetching upstream..."
+    git fetch upstream
+    echo "--> Switching to local master branch"
+    git checkout master
+    echo "--> Merging upstream/master with local master."
+    git merge upstream/master
+    echo "--> Done"
+else
+    echo "There doesn't seem to be an upstream branch."
+    echo "Try running:"
+    echo "  git remote add upstream <PATH TO MASTER OR CLONE URL>"
+    echo "for example:"
+    echo "  git remote add upstream https://github.com/user/repo.git"
+fi
