@@ -1,0 +1,4 @@
+#--------------------------------------------------------------------
+# Adds an empty commit (often used to re-trigger an automated job)
+#--------------------------------------------------------------------
+git commit --allow-empty -m "Trigger build" && git push
