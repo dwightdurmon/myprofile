@@ -1,0 +1,2 @@
+# Validate CFT template
+aws cloudformation validate-template --profile "$AWS_PROFILE" --template-body "file://./$*"

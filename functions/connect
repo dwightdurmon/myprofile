@@ -1,0 +1,25 @@
+# Connect function
+
+clear
+echo "SSH Hosts defined in ~/.ssh/config:"
+echo " "
+
+OLD_PS3=$PS3
+
+PS3="Select a host or QUIT: "
+
+select SSH_HOST in $(grep -E "^Host [a-z].*" ~/.ssh/config | sed 's/Host //g' | sort) "QUIT"; do
+    if [[ "$SSH_HOST" == "QUIT" ]]; then
+        echo "Exiting script!  Have a nice day!"
+        PS3=$OLD_PS3
+        break
+    elif [[ "$SSH_HOST" == "" ]]; then
+        echo "Invalid Option, try again."
+        continue
+    else
+        echo "Connecting to $SSH_HOST ($REPLY)"
+        PS3=$OLD_PS3
+        ssh "$SSH_HOST"
+        break
+    fi 
+done
