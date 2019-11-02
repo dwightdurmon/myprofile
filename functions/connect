@@ -1,4 +1,6 @@
-# Connect function
+#--------------------------------------------------------------------
+# Connect function which reads the local ssh config file
+#--------------------------------------------------------------------
 
 clear
 echo "SSH Hosts defined in ~/.ssh/config:"
